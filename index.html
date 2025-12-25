@@ -28,6 +28,8 @@
           background-color: white !important;
           margin: 0 !important;
           padding: 0 !important;
+          width: 210mm;
+          height: 297mm;
         }
         .max-w-5xl {
           max-width: 100% !important;
@@ -37,12 +39,30 @@
           box-shadow: none !important;
           border-radius: 0 !important;
         }
-        .print-shadow-none {
-          box-shadow: none !important;
+        /* ضغط المسافات في الطباعة لضمان صفحة واحدة */
+        .print-tight {
+          margin-top: 1rem !important;
+          margin-bottom: 1rem !important;
+          padding-top: 0.5rem !important;
+          padding-bottom: 0.5rem !important;
         }
+        .print-p-0 { padding: 0 !important; }
+        .print-px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        .print-py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+        
         @page {
-          margin: 1cm;
-          size: A4;
+          margin: 0.5cm;
+          size: A4 portrait;
+        }
+        
+        /* منع تقطيع الجداول أو العناصر المهمة */
+        tr, div, section {
+          page-break-inside: avoid;
+        }
+        
+        /* تقليص حجم الخط قليلاً عند الطباعة لضمان الاحتواء */
+        html {
+          font-size: 13px;
         }
       }
       .max-w-5xl {

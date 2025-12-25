@@ -40,12 +40,12 @@ const App: React.FC = () => {
         cost: 12500
       }
     ],
-    vatRate: 0.14, // ضريبة القيمة المضافة في مصر 14%
+    vatRate: 0.14,
     terms: [
       "يسري عرض السعر لمدة 10 أيام عمل من تاريخ الإصدار.",
-      "طريقة الدفع: 50% دفعة مقدمة عند التعاقد، و 50% عند الاستلام والتشغيل.",
-      "الأسعار المذكورة لا تشمل أي مصاريف إضافية غير مذكورة في الوصف.",
-      "تلتزم شركة إنجاز بتقديم الدعم الفني مجاناً لمدة 3 أشهر بعد التسليم."
+      "طريقة الدفع: 50% دفعة مقدمة عند التعاقد، و 50% عند الاستلام.",
+      "الأسعار المذكورة لا تشمل أي مصاريف إضافية غير مذكورة.",
+      "تلتزم شركة إنجاز بتقديم الدعم الفني مجاناً لمدة 3 أشهر."
     ]
   });
 
@@ -91,17 +91,17 @@ const App: React.FC = () => {
           date={quotation.date} 
         />
         
-        <div className="px-12 py-12">
+        <div className="px-12 py-8 print-px-6 print-py-4">
           <ClientSection client={quotation.client} />
           
-          <div className="mt-14">
-            <h3 className="text-2xl font-extrabold text-[#1b4332] mb-8 border-r-8 border-[#1b4332] pr-4">
+          <div className="mt-8 print-tight">
+            <h3 className="text-xl font-extrabold text-[#1b4332] mb-4 border-r-4 border-[#1b4332] pr-3 print-tight">
               بنود العرض الفني والمالي
             </h3>
             <ServiceTable items={quotation.items} />
           </div>
 
-          <div className="mt-12 flex justify-end">
+          <div className="mt-8 flex justify-end print-tight">
             <PricingSummary 
               subtotal={totals.subtotal} 
               vat={totals.vat} 
@@ -114,49 +114,40 @@ const App: React.FC = () => {
         </div>
 
         {/* Footer Area with Egyptian Branding */}
-        <div className="bg-[#f8fbfa] border-t-2 border-green-50 px-12 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="space-y-4">
-              <img src="https://enjaz.app/assets/img/enjaz-logo-main.webp" alt="Enjaz" className="h-12" />
-              <p className="text-gray-500 text-sm font-medium leading-relaxed">
+        <div className="bg-[#f8fbfa] border-t-2 border-green-50 px-12 py-6 print-py-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <img src="https://enjaz.app/assets/img/enjaz-logo-main.webp" alt="Enjaz" className="h-10" />
+              <p className="text-gray-500 text-[11px] font-medium leading-relaxed">
                 شريككم الاستراتيجي للتحول الرقمي والحلول التقنية المبتكرة في قلب القاهرة.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <h5 className="text-[#1b4332] font-black text-sm uppercase tracking-widest border-b border-green-100 pb-2">بيانات الاتصال</h5>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3 text-gray-700 font-semibold">
-                  <div className="w-6 h-6 rounded bg-green-100 flex items-center justify-center text-green-700">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  </div>
+            <div className="space-y-2">
+              <h5 className="text-[#1b4332] font-black text-xs uppercase tracking-widest border-b border-green-100 pb-1">الاتصال</h5>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-gray-700 text-xs font-semibold">
                   info@enjaz.app
                 </div>
-                <div className="flex items-center gap-3 text-gray-700 font-bold" dir="ltr">
-                  <div className="w-6 h-6 rounded bg-green-100 flex items-center justify-center text-green-700">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                  </div>
+                <div className="flex items-center gap-2 text-gray-700 text-xs font-bold" dir="ltr">
                   01225251888
                 </div>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h5 className="text-[#1b4332] font-black text-sm uppercase tracking-widest border-b border-green-100 pb-2">مقر الشركة</h5>
-              <div className="flex items-start gap-3 text-gray-700">
-                <div className="w-6 h-6 rounded bg-green-100 flex items-center justify-center text-green-700 shrink-0 mt-1">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <p className="font-bold leading-relaxed text-sm">
-                  مكرم عبيد - مدينة نصر<br />القاهرة، مصر
+            <div className="space-y-2">
+              <h5 className="text-[#1b4332] font-black text-xs uppercase tracking-widest border-b border-green-100 pb-1">الموقع</h5>
+              <div className="flex items-start gap-2 text-gray-700">
+                <p className="font-bold leading-relaxed text-[11px]">
+                  مكرم عبيد - مدينة نصر، القاهرة
                 </p>
               </div>
             </div>
           </div>
           
-          <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 font-bold">
-            <p>© {new Date().getFullYear()} إنجاز للحلول الذكية. جميع الحقوق محفوظة.</p>
-            <p className="tracking-[0.2em]">ENJAZ SMART SOLUTIONS | CAIRO, EGYPT</p>
+          <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-[9px] text-gray-400 font-bold">
+            <p>© {new Date().getFullYear()} إنجاز للحلول الذكية.</p>
+            <p className="tracking-[0.1em]">ENJAZ SMART SOLUTIONS | CAIRO, EGYPT</p>
           </div>
         </div>
       </div>
