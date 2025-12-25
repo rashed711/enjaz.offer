@@ -14,14 +14,14 @@ export const PricingSummary: React.FC<Props> = ({ subtotal, vat, total, vatRate 
       <div className="flex justify-between items-center px-4">
         <span className="text-gray-500 font-bold text-sm">الإجمالي قبل الضريبة:</span>
         <span className="text-gray-800 font-black text-lg">
-          {subtotal.toLocaleString('ar-EG')} <span className="text-[10px] text-gray-400">جنية مصري</span>
+          {subtotal.toLocaleString('en-US')} <span className="text-[10px] text-gray-400">جنية مصري</span>
         </span>
       </div>
       
       <div className="flex justify-between items-center px-4">
         <span className="text-gray-500 font-bold text-sm">ضريبة القيمة المضافة ({vatRate}%):</span>
         <span className="text-gray-800 font-black text-lg">
-          {vat.toLocaleString('ar-EG')} <span className="text-[10px] text-gray-400">جنية مصري</span>
+          {vat.toLocaleString('en-US')} <span className="text-[10px] text-gray-400">جنية مصري</span>
         </span>
       </div>
 
@@ -32,7 +32,7 @@ export const PricingSummary: React.FC<Props> = ({ subtotal, vat, total, vatRate 
         </div>
         <div className="text-left">
           <span className="text-4xl font-black tracking-tighter">
-            {total.toLocaleString('ar-EG')}
+            {total.toLocaleString('en-US')}
           </span>
           <span className="mr-2 text-xs font-extrabold bg-white/20 px-2 py-1 rounded">ج.م</span>
         </div>

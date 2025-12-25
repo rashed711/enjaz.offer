@@ -25,7 +25,7 @@ export const ServiceTable: React.FC<Props> = ({ items }) => {
               <td className="py-4 px-4 text-gray-600 text-[11px] leading-relaxed align-top max-w-sm">{item.description}</td>
               <td className="py-4 px-4 text-gray-700 text-xs font-bold text-center align-top">{item.duration}</td>
               <td className="py-4 px-4 text-[#1b4332] font-black text-base text-left align-top whitespace-nowrap">
-                {item.cost.toLocaleString('ar-EG')} <span className="text-[10px] font-bold text-gray-400">ج.م</span>
+                {item.cost.toLocaleString('en-US')} <span className="text-[10px] font-bold text-gray-400">ج.م</span>
               </td>
             </tr>
           ))}

@@ -8,9 +8,10 @@ import { TermsSection } from './components/TermsSection';
 import { QuotationData, ServiceItem } from './types';
 
 const App: React.FC = () => {
+  // استخدام التاريخ بتنسيق YYYY-MM-DD لتسهيل التعامل مع الـ Date Picker
   const [quotation, setQuotation] = useState<QuotationData>({
     number: `QT-${new Date().getFullYear()}-001`,
-    date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' }),
+    date: new Date().toISOString().split('T')[0],
     client: {
       name: "اسم العميل الكريم",
       company: "اسم شركة العميل",
@@ -34,6 +35,13 @@ const App: React.FC = () => {
     ]
   });
 
+  // تنسيق التاريخ للعرض في ترويسة العرض (يوم / شهر / سنة) بأرقام إنجليزية
+  const formattedDisplayDate = useMemo(() => {
+    if (!quotation.date) return "";
+    const [year, month, day] = quotation.date.split('-');
+    return `${day} / ${month} / ${year}`;
+  }, [quotation.date]);
+
   const totals = useMemo(() => {
     const subtotal = quotation.items.reduce((sum, item) => sum + item.cost, 0);
     const vat = subtotal * quotation.vatRate;
@@ -42,7 +50,7 @@ const App: React.FC = () => {
   }, [quotation.items, quotation.vatRate]);
 
   useEffect(() => {
-    document.title = `عرض سعر - ${quotation.client.company} - ${quotation.number}`;
+    document.title = `عرض سعر - ${quotation.client.company || 'إنجاز'} - ${quotation.number}`;
   }, [quotation.number, quotation.client.company]);
 
   const handleAddItem = () => {
@@ -117,8 +125,8 @@ const App: React.FC = () => {
                     value={quotation.number} onChange={e => setQuotation({...quotation, number: e.target.value})} />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-gray-500 mr-1">التاريخ</label>
-                  <input className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none" 
+                  <label className="text-xs font-bold text-gray-500 mr-1">تاريخ العرض (اختر من التقويم)</label>
+                  <input type="date" className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 outline-none" 
                     value={quotation.date} onChange={e => setQuotation({...quotation, date: e.target.value})} />
                 </div>
                 <div className="space-y-1 col-span-2">
@@ -218,7 +226,7 @@ const App: React.FC = () => {
       <div className="max-w-5xl mx-auto bg-white shadow-2xl print-shadow-none overflow-hidden rounded-[2.5rem] border border-gray-100">
         <QuotationHeader 
           quotationNumber={quotation.number} 
-          date={quotation.date} 
+          date={formattedDisplayDate} 
         />
         
         <div className="px-12 py-8 print-px-6 print-py-4">
@@ -249,7 +257,7 @@ const App: React.FC = () => {
             <div className="space-y-2">
               <img src="https://enjaz.app/assets/img/enjaz-logo-main.webp" alt="Enjaz" className="h-10" />
               <p className="text-gray-500 text-[11px] font-medium leading-relaxed">
-                شريككم الاستراتيجي للتحول الرقمي والحلول التقنية المبتكرة في قلب القاهرة.
+                شريككم الاستراتيجي للتحول الرقمي والحلول التقنية المبتكرة.
               </p>
             </div>
 
