@@ -12,19 +12,12 @@ export const PricingSummary: React.FC<Props> = ({ subtotal, vat, total, vatRate 
   return (
     <div className="w-full max-w-[400px] space-y-3 bg-[#fdfdfd] p-4 rounded-3xl border border-gray-100 shadow-inner">
       <div className="flex justify-between items-center px-4">
-        <span className="text-gray-500 font-bold text-sm">الإجمالي قبل الضريبة:</span>
+        <span className="text-gray-500 font-bold text-sm">الإجمالي:</span>
         <span className="text-gray-800 font-black text-lg">
           {subtotal.toLocaleString('en-US')} <span className="text-[10px] text-gray-400">جنية مصري</span>
         </span>
       </div>
       
-      <div className="flex justify-between items-center px-4">
-        <span className="text-gray-500 font-bold text-sm">ضريبة القيمة المضافة ({vatRate}%):</span>
-        <span className="text-gray-800 font-black text-lg">
-          {vat.toLocaleString('en-US')} <span className="text-[10px] text-gray-400">جنية مصري</span>
-        </span>
-      </div>
-
       <div className="bg-[#1b4332] text-white p-6 rounded-2xl flex justify-between items-center shadow-xl shadow-green-900/20 transform transition hover:scale-[1.02]">
         <div className="space-y-1">
           <span className="text-xs font-bold opacity-70 uppercase tracking-widest">المبلغ الإجمالي</span>
