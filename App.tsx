@@ -25,7 +25,7 @@ const App: React.FC = () => {
         description: "تسجيل انطاق الرسمي للشركة SmartSource-eg.com",
         duration: "سنة واحدة",
         cost: 850
-      }
+      },
 
       {
         id: "2",
