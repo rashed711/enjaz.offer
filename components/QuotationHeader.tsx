@@ -25,7 +25,7 @@ export const QuotationHeader: React.FC<Props> = ({ quotationNumber, date }) => {
           <div className="h-10 w-px bg-gray-200 hidden md:block mx-1"></div>
           <div className="hidden md:block">
             <h2 className="text-xl font-bold text-green-900 leading-tight">إنجاز للحلول الذكية</h2>
-            <p className="text-green-600 font-medium uppercase text-[9px]">Smart Smart Solutions</p>
+            <p className="text-green-600 font-medium uppercase text-[9px]">Enjaz Smart Solutions</p>
           </div>
         </div>
 
